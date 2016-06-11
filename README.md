@@ -23,3 +23,15 @@ cuando el usuario ingrese texto que este desaparezca.
 que abra un _file dialog_ para ubicar un archivo en
 específico, la ruta del archivo deberá escribirse en la
 caja de texto.
+
+### Tarea 2 - Entrega 18 de junio de 2016
+
+Descargar el material del tema de Redes con Java [El Modelo OSI](https://github.com/badillosoft/Java-Avanzado/blob/master/Material/Redes%20con%20Java%20-%20El%20modelo%20OSI%20y%20Protocolos%20de%20Red.pdf) contenido en la carpeta material de este git. Responder brevemente las siguientes preguntas:
+
+**¿Qué es el modelo OSI?**
+
+**Describir brevemente cada una de las capas del modelo OSI**
+
+**¿Qué es un protocolo de red?**
+
+**Mencione brevemente como funcionan TCP y UDP**
