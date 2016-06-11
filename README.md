@@ -35,3 +35,5 @@ Descargar el material del tema de Redes con Java [El Modelo OSI](https://github.
 **¿Qué es un protocolo de red?**
 
 **Mencione brevemente como funcionan TCP y UDP**
+
+**1 punto** - Mostrar el porcentaje de los _bytes_ escritos en el archivo destino. El porcentaje se puede calcular dividiendo el `número de bytes escritos` entre el `total de bytes del archivo` por _100_. Ten en cuenta que en el ciclo `while` puedes colocar un contador que cuente los _bytes_ escritos.
