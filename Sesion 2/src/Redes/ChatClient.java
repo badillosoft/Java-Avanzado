@@ -20,6 +20,8 @@ import java.util.logging.Logger;
  */
 public class ChatClient extends javax.swing.JFrame {
 
+    ChatClientSocket socket = null;
+    
     /**
      * Creates new form ChatClient
      */
@@ -42,6 +44,7 @@ public class ChatClient extends javax.swing.JFrame {
         txt_console = new javax.swing.JTextArea();
         txt_message = new javax.swing.JTextField();
         btn_send = new javax.swing.JButton();
+        txt_usuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,6 +69,8 @@ public class ChatClient extends javax.swing.JFrame {
             }
         });
 
+        txt_usuario.setText("Usuario");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,6 +78,7 @@ public class ChatClient extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_usuario)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txt_message)
@@ -92,8 +98,10 @@ public class ChatClient extends javax.swing.JFrame {
                     .addComponent(txt_hostname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_port, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_message, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_send))
@@ -109,18 +117,35 @@ public class ChatClient extends javax.swing.JFrame {
 
     private void btn_sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sendActionPerformed
         
+        /*if (socket == null) {
+            String host = txt_hostname.getText();
+            int port = Integer.parseInt(txt_port.getText());
+            
+            try {
+                socket = new ChatClientSocket(host, port);
+            } catch (IOException ex) {
+                System.out.println("Error al conectar el socket");
+            }
+        }
+        
+        System.out.println(socket);
+        
+        txt_console.append(socket.receive());*/
+        
         String host = txt_hostname.getText();
         int port = Integer.parseInt(txt_port.getText());
         
         try (Socket socket = new Socket(host, port)) {
             
             try (BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
+                
                 txt_console.append("\r\n");
                 txt_console.append(in.readLine());
+                
             }
             
         } catch (IOException ex) {
-            txt_console.append("\r\nHubo un error al conectarse con el servidor D:");
+            txt_console.append("\r\nError al conectarse con el servidor");
         }
         
     }//GEN-LAST:event_btn_sendActionPerformed
@@ -167,5 +192,6 @@ public class ChatClient extends javax.swing.JFrame {
     private javax.swing.JTextField txt_hostname;
     private javax.swing.JTextField txt_message;
     private javax.swing.JTextField txt_port;
+    private javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables
 }
