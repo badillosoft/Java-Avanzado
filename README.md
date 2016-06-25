@@ -6,6 +6,8 @@
 
 **11 de junio** - https://slides.com/alanbadillosalas/hilos-java/ https://slides.com/alanbadillosalas/redes-java/
 
+**25 de junio** - http://slides.com/alanbadillosalas/rmi-java
+
 ### Tarea 1 - Entrega 11 de junio de 2016
 
 Crear una interfaz en _Swing_ que contenga dos cajas de
