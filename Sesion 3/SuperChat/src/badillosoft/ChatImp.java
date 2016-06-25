@@ -9,7 +9,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Date;
-//import java.util.Iterator;
+import java.util.Iterator;
 
 /**
  *
@@ -27,19 +27,26 @@ public class ChatImp extends UnicastRemoteObject implements Chat {
     public boolean conectar(Usuario usuario) throws RemoteException {
         String nombre = usuario.obtenerNombre();
         
-        /*Iterator it = usuarios.iterator();
+        Iterator it = usuarios.iterator();
         
         while(it.hasNext()) {
             Usuario u = (Usuario)(it.next());
             
-            String unombre = u.obtenerNombre();
+            String unombre;
             
-            if (unombre == nombre) {
+            try {
+                unombre = u.obtenerNombre();
+            } catch (Exception e) {
+                it.remove();
+                continue;
+            }
+            
+            if (unombre == null ? nombre == null : unombre.equals(nombre)) {
                 return false;
             }
-        }*/
+        }
         
-        for (Object obj : usuarios) {
+        /*for (Object obj : usuarios) {
             Usuario u = (Usuario)(obj);
             
             String unombre = u.obtenerNombre();
@@ -47,7 +54,7 @@ public class ChatImp extends UnicastRemoteObject implements Chat {
             if (unombre == null ? nombre == null : unombre.equals(nombre)) {
                 return false;
             }
-        }
+        }*/
         
         usuarios.add(usuario);
         

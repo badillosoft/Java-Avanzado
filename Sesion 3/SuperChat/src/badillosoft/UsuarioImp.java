@@ -7,6 +7,7 @@ package badillosoft;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -15,11 +16,13 @@ import java.rmi.server.UnicastRemoteObject;
 public class UsuarioImp extends UnicastRemoteObject implements Usuario {
 
     String nombre;
+    JTextArea txt_consola;
     
-    public UsuarioImp(String nombre) throws RemoteException {
+    public UsuarioImp(String nombre, JTextArea txt_consola) throws RemoteException {
        super();
         
-       this.nombre = nombre; 
+       this.nombre = nombre;
+       this.txt_consola = txt_consola;
     }
     
     @Override
@@ -30,6 +33,7 @@ public class UsuarioImp extends UnicastRemoteObject implements Usuario {
     @Override
     public void recibirMensaje(String mensaje) throws RemoteException {
         System.out.println(mensaje);
+        txt_consola.append("\r\n" + mensaje);
     }
     
 }

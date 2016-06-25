@@ -24,7 +24,7 @@ public class ClienteChat {
         
         String nombre = s.nextLine();
         
-        Usuario usuario = new UsuarioImp(nombre);
+        Usuario usuario = new UsuarioImp(nombre, null);
         
         Chat con = (Chat)Naming.lookup("chat");
         
