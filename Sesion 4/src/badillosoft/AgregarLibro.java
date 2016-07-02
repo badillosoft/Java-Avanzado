@@ -9,6 +9,7 @@ import java.io.File;
 import java.util.ArrayList;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 /**
  *
@@ -48,6 +49,7 @@ public class AgregarLibro extends javax.swing.JFrame {
         btn_descargar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_consola = new javax.swing.JTextArea();
+        btn_cargar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +85,13 @@ public class AgregarLibro extends javax.swing.JFrame {
         txt_consola.setRows(5);
         jScrollPane1.setViewportView(txt_consola);
 
+        btn_cargar.setText("Cargar");
+        btn_cargar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_cargarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,7 +113,8 @@ public class AgregarLibro extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(btn_cargar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -127,9 +137,12 @@ public class AgregarLibro extends javax.swing.JFrame {
                     .addComponent(btn_limpiar)
                     .addComponent(btn_agregar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_descargar))
+                .addComponent(btn_descargar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_cargar)
+                .addContainerGap())
         );
 
         pack();
@@ -185,6 +198,29 @@ public class AgregarLibro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_descargarMouseClicked
 
+    private void btn_cargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cargarMouseClicked
+        String filename = "/Users/alan/biblioteca.xml";
+        
+        try {
+            JAXBContext context = JAXBContext.newInstance(Biblioteca.class);
+
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+
+            biblioteca = (Biblioteca)unmarshaller.unmarshal(
+                new File(filename));
+        } catch (Exception e) {
+            txt_consola.append("Error: " + e.getMessage() + "\r\n");
+        }
+        
+        // 4. Limpiar la consola y mostrar los libros que hay
+        txt_consola.setText("");
+        
+        for (Libro libro_aux : biblioteca.libros.libro) {
+            txt_consola.append(String.format("Autor: %s, Título: %s, ISBN: %s\r\n",
+                libro_aux.autor, libro_aux.título, libro_aux.isbn));
+        }
+    }//GEN-LAST:event_btn_cargarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -222,6 +258,7 @@ public class AgregarLibro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregar;
+    private javax.swing.JButton btn_cargar;
     private javax.swing.JButton btn_descargar;
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JLabel jLabel1;

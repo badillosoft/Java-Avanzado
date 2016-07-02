@@ -35,7 +35,7 @@ public class BibliotecaTest {
         
         Libro libro2 = new Libro();
         
-        libro2.autor = "Pablo Cohelo";
+        libro2.autor = "Paulo Cohello";
         libro2.título = "El alquimista";
         libro2.isbn = "987-654-321";
         
