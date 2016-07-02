@@ -23,7 +23,7 @@ public class BibliotecaTest {
         
         biblio.libros = new Libros();
         
-        biblio.libros.libro = new ArrayList<Libro>();
+        biblio.libros.libro = new ArrayList<>();
         
         Libro libro1 = new Libro();
         
