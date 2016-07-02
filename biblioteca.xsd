@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="biblioteca">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="libros"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="libros">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="libro" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="libro">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="título" type="xs:string"/>
+				<xs:element name="autor" type="xs:string"/>
+			</xs:sequence>
+			<xs:attribute name="isbn" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

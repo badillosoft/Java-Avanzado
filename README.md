@@ -39,3 +39,15 @@ Descargar el material del tema de Redes con Java [El Modelo OSI](https://github.
 **Mencione brevemente como funcionan TCP y UDP**
 
 **1 punto** - Mostrar el porcentaje de los _bytes_ escritos en el archivo destino. El porcentaje se puede calcular dividiendo el `número de bytes escritos` entre el `total de bytes del archivo` por _100_. Ten en cuenta que en el ciclo `while` puedes colocar un contador que cuente los _bytes_ escritos.
+
+### Tarea 3 - Entrega 9 de julio de 2016
+
+Agregar al archivo `biblioteca.xsd` el elemento `tesis` según el diagrama visto en clase.
+
+### Tarea 4 - Entrega 9 de julio de 2016
+
+Implementar un *FileDialog* al botón `Descargar` y al botón `Cargar` del proyecto de la *Sesión 4*.
+
+### Tarea 5 - Entrega 9 de julio de 2016
+
+Crear una clase llamada `Persona` y otra llamada `Personas` mediante un esquema *XSD* y compilarlas mediante `xjc archivo.xsd`.
