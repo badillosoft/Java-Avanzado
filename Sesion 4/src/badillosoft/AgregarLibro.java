@@ -5,7 +5,10 @@
  */
 package badillosoft;
 
+import java.io.File;
 import java.util.ArrayList;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
 
 /**
  *
@@ -69,6 +72,11 @@ public class AgregarLibro extends javax.swing.JFrame {
         });
 
         btn_descargar.setText("Descargar");
+        btn_descargar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_descargarMouseClicked(evt);
+            }
+        });
 
         txt_consola.setEditable(false);
         txt_consola.setColumns(20);
@@ -160,6 +168,22 @@ public class AgregarLibro extends javax.swing.JFrame {
         
         btn_limpiarMouseClicked(evt);
     }//GEN-LAST:event_btn_agregarMouseClicked
+
+    private void btn_descargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_descargarMouseClicked
+        String filename = "/Users/alan/biblioteca.xml";
+        
+        try {
+            JAXBContext context = JAXBContext.newInstance(Biblioteca.class);
+
+            Marshaller marshaller = context.createMarshaller();
+
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+            marshaller.marshal(biblioteca, new File(filename));
+        } catch(Exception e) {
+            txt_consola.append("Error: " + e.getMessage() + "\r\n");
+        }
+    }//GEN-LAST:event_btn_descargarMouseClicked
 
     /**
      * @param args the command line arguments
