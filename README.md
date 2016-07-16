@@ -51,3 +51,33 @@ Implementar un *FileDialog* al botón `Descargar` y al botón `Cargar` del proye
 ### Tarea 5 - Entrega 9 de julio de 2016
 
 Crear una clase llamada `Persona` y otra llamada `Personas` mediante un esquema *XSD* y compilarlas mediante `xjc archivo.xsd`.
+
+## Proyecto Final
+
+Los participantes del curso deberán entregar un proyecto en equipo a más tardar
+el día ´23 de julio de 2016´. Los proyectos deberán contener un documento con
+la institución, el nombre completo de los alumnos y el instructor, el mes y año
+y un título que este relacionado al proyecto. El documento deberá contener una
+introducción al problema que resuelve de no más de 2 parrafos (en máximo una cuartilla).
+Después el algoritmo general que siguieron y los fragmentos de código más representativos
+que utilizaron. Finalmente este documento debe ser adjuntado en un archivo ´zip´ junto
+a la carpeta del proyecto y el ejecutable ´jar´.
+
+### Proyecto 1 - Mezclar dos archivos binarios en uno
+
+Se requiere un programa que solicite dos archivos cualquiera y lea cada uno de sus
+´bytes´. El programa debe decidir cual es el archivo de mayor tamaño y colocar en
+un tercer archivo un 1 si el primer archivo es mayor o un 0 sino. Luego en el tercer
+archivo se debe escribir un byte de un archivo y uno del otro alternadamente.
+Los bytes restantes serán del archivo de mayor tamaño. Intente realizar todo el
+proceso usando _hilos_ y utilizando _buffers_.
+
+> __Nota:__ Se debe utilizar una interfaz gráfica y _file dialogs_ para
+ingresar las rutas de los archivos.
+
+### Proyecto 2 - Encriptación _SHA_
+
+Se requiere un programa que implemente el algoritmo de encriptación _SHA_ en cualquier
+variante deseada. El programa debe recibir una cadena de texto y mostrar su encriptación
+utilizando una clave pública. Los datos deben ser enviados a un servidor el cual
+debe regresar el texto codificado.
